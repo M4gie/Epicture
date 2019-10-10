@@ -1,43 +1,58 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import HomeContainer from "../../views/Home";
+import UploadContainer from "../../views/Upload";
+import FavoriteContainer from "../../views/Favorite";
+import UserContainer from "../../views/User";
 
-const navElements = [
-    {iconName: "home", view: "Home", id: 0},
-    {iconName: "plus-square", view: "Upload", id: 1},
-    {iconName: "heart", view: "Favorite", id: 3},
-    {iconName: "user", view: "User", id: 2},
-];
-
-const NavBar = (props) => {
-    const {navigation} = props;
-    return (
-        <View style={styles.navBar}>
-            {navElements.map(element => {
-                return (<Icon.Button
-                    name={element.iconName}
-                    onPress={() => navigation.navigate(element.view)}
-                    color="white"
-                    style={styles.icon}
-                    size={25}
-                    backgroundColor="transparent"
-                    key={element.id}
-                />);
-            })}
-        </View>
-    );
-};
-
-const styles = StyleSheet.create({
-    navBar: {
-        width: '100%',
-        flexDirection: 'row',
-        backgroundColor: 'red',
+const bottomTabNavigator = createBottomTabNavigator(
+    {
+        Home: {
+            screen: HomeContainer,
+            navigationOptions: {
+                tabBarIcon: ({tintColor}) => (
+                    <Icon name={"home"} color={tintColor} size={25}/>
+                )
+            }
+        },
+        Upload: {
+            screen: UploadContainer,
+            navigationOptions: {
+                tabBarIcon: ({tintColor}) => (
+                    <Icon name={"plus-square"} color={tintColor} size={25}/>
+                )
+            }
+        },
+        Favorite: {
+            screen: FavoriteContainer,
+            navigationOptions: {
+                tabBarIcon: ({tintColor}) => (
+                    <Icon name={"heart"} color={tintColor} size={25}/>
+                )
+            }
+        },
+        User: {
+            screen: UserContainer,
+            navigationOptions: {
+                tabBarIcon: ({tintColor}) => (
+                    <Icon name={"user"} color={tintColor} size={25}/>
+                )
+            }
+        },
     },
-
-    icon: {
-        alignSelf: 'stretch'
+    {
+        initialRouteName: 'Home',
+        tabBarOptions: {
+            activeTintColor: 'white',
+            inactiveTintColor: 'white',
+            showLabel: false,
+            style: {backgroundColor: 'hsl(218,7%,21%)'}
+        }
     }
-})
+);
+
+const NavBar = createAppContainer(bottomTabNavigator);
 
 export default NavBar;
