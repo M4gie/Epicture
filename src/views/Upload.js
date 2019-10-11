@@ -4,7 +4,7 @@ import LayoutContainer from "../components/layout/Layout";
 
 const UploadContainer = () => {
     return (
-        <LayoutContainer title={"UPLOAD"}>
+        <LayoutContainer title={"Ajouter une photo"}>
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                 <Text>Picture upload</Text>
             </View>
