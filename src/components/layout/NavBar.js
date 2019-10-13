@@ -1,11 +1,15 @@
 import React from 'react';
-import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import HomeContainer from '../../views/Home';
 import UploadContainer from '../../views/Upload';
 import FavoriteContainer from '../../views/Favorite';
 import UserContainer from '../../views/User';
+import AuthLoadingContainer from "../../views/Login/AuthLoading";
+import AuthContainer from "../../views/Login/Auth";
+
 
 const bottomTabNavigator = createBottomTabNavigator(
   {
@@ -48,6 +52,7 @@ const bottomTabNavigator = createBottomTabNavigator(
       activeTintColor: 'white',
       inactiveTintColor: 'white',
       showLabel: false,
+      keyboardHidesTabBar: false,
       style: {
         backgroundColor: 'hsl(218,7%,21%)',
         paddingBottom: 2,
@@ -57,6 +62,18 @@ const bottomTabNavigator = createBottomTabNavigator(
   },
 );
 
-const NavBar = createAppContainer(bottomTabNavigator);
+const AppStack = createAppContainer(bottomTabNavigator);
+const AuthStack = createStackNavigator({ SignIn: AuthContainer });
 
-export default NavBar;
+export default createAppContainer(
+    createSwitchNavigator(
+        {
+          AuthLoading: AuthLoadingContainer,
+          App: AppStack,
+          Auth: AuthStack,
+        },
+        {
+          initialRouteName: 'AuthLoading',
+        }
+    )
+);

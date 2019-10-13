@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, FlatList, StyleSheet} from 'react-native';
+import {View, FlatList, StyleSheet} from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import LayoutContainer from '../components/layout/Layout';
 import ImageView from '../components/image/ImageView';
