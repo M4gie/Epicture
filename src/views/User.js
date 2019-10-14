@@ -1,10 +1,17 @@
 import React from 'react';
-import {Text, View, StyleSheet, Image, TouchableOpacity, Button} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Button,
+} from 'react-native';
 import LayoutContainer from '../components/layout/Layout';
 import CircleImage from '../components/image/CircleImage';
 import GridList from 'react-native-grid-list';
 import stylesheet from '../styles/styles';
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from '@react-native-community/async-storage';
 
 const items = [
   {
@@ -64,17 +71,17 @@ class UserContainer extends React.Component {
     </View>
   );
 
-    _signOutAsync = async () => {
-        await AsyncStorage.clear();
-        this.props.navigation.navigate('Auth');
-    };
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth');
+  };
 
   render() {
     return (
       <LayoutContainer title={'Profil'}>
         <View style={styles.main_container}>
-            <Button title="Deconnexion" onPress={this._signOutAsync} />
-            <View style={[styles.banner, stylesheet.shadow_box]}>
+          <Button title="Deconnexion" onPress={this._signOutAsync} />
+          <View style={[styles.banner, stylesheet.shadow_box]}>
             <View style={styles.banner_content}>
               <View style={styles.picture}>
                 <CircleImage

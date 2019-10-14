@@ -1,7 +1,8 @@
 import {StyleSheet} from 'react-native';
 
 let stylesheet;
-export default stylesheet = StyleSheet.create({
+
+export default (stylesheet = StyleSheet.create({
   shadow_box: {
     shadowColor: '#000',
     shadowOffset: {
@@ -19,6 +20,6 @@ export default stylesheet = StyleSheet.create({
     color: 'white',
   },
   bold: {
-    fontWeight: 'bold'
-  }
-});
+    fontWeight: 'bold',
+  },
+}));
