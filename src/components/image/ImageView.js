@@ -13,7 +13,7 @@ class ImageView extends React.Component {
       <View style={styles.main_container}>
         <View style={styles.topview}>
           <View style={{width: 60, padding: 5}}>
-            <CircleImage pic={image.profilepic} />
+            <CircleImage size={60} pic={image.profilepic} />
           </View>
           <View
             style={{
@@ -21,7 +21,7 @@ class ImageView extends React.Component {
               height: '100%',
               padding: 5,
             }}>
-            <Text numberOfLines={2} style={[stylesheet.bold, stylesheet.white]}>
+            <Text style={[stylesheet.bold, stylesheet.white]}>
               {image.title}
             </Text>
             <Text style={[{fontSize: 12}, stylesheet.grey]}>

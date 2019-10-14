@@ -80,7 +80,7 @@ class UserContainer extends React.Component {
     return (
       <LayoutContainer title={'Profil'}>
         <View style={styles.main_container}>
-          <Button title="Deconnexion" onPress={this._signOutAsync} />
+          <Button title="Déconnexion" onPress={this._signOutAsync} />
           <View style={[styles.banner, stylesheet.shadow_box]}>
             <View style={styles.banner_content}>
               <View style={styles.picture}>
