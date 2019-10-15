@@ -345,7 +345,10 @@ class HomeContainer extends React.Component {
   render() {
     const {search} = this.state;
     return (
-      <LayoutContainer title={'Ouistigram'}>
+      <LayoutContainer
+        title={'Ouistigram'}
+        font={'Catalunyademo'}
+        fontSize={30}>
         <SearchBar
           inputContainerStyle={{borderRadius: 50}}
           containerStyle={[stylesheet.shadow_box, {borderTopWidth: 0}]}

@@ -1,13 +1,16 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import stylesheet from '../../styles/styles'
+import stylesheet from '../../styles/styles';
 
 const LayoutContainer = props => {
-  const {title} = props;
+  const {title, font, fontSize} = props;
   return (
     <>
-      <View style={styles.container}>
-        <Text style={stylesheet.white}>{title}</Text>
+      <View style={[styles.container, stylesheet.shadow_box]}>
+        <Text
+          style={[stylesheet.white, {fontFamily: font, fontSize: fontSize}]}>
+          {title}
+        </Text>
       </View>
       {props.children}
     </>

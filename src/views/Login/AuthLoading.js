@@ -21,8 +21,8 @@ class AuthLoadingContainer extends React.Component {
   render() {
     return (
       <View style={styles.main_container}>
-        <ActivityIndicator />
-        <Text style={styles.text}>Ça charge</Text>
+        <ActivityIndicator size={'large'} />
+        <Text style={styles.text}>Ouistigram</Text>
         <StatusBar barStyle="default" />
       </View>
     );
@@ -33,10 +33,15 @@ const styles = StyleSheet.create({
   main_container: {
     flex: 1,
     backgroundColor: 'hsl(218,15%,15%)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     textAlign: 'center',
+    fontSize: 35,
     color: 'white',
+    marginVertical: 30,
+    fontFamily: 'Catalunyademo',
   },
 });
 

@@ -5252,6 +5252,11 @@ react-native-grid-list@^1.1.0:
   dependencies:
     prop-types "^15.6.0"
 
+react-native-image-crop-picker@^0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.26.0.tgz#4d6da5abface7b5642e20f41f59cdc3a0bfb10db"
+  integrity sha512-FVis/dHoPY5+QFizWMvqPNwhztV50k25lAIhgnX+NbrOcd62/F/m2sxWHX0MQ/No/4iBNAgGB4YnYR6rF6gtEw==
+
 react-native-ratings@^6.3.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.5.0.tgz#a1606ccba3c5b54eec8e6cfa4765a45cf0e4ab8d"

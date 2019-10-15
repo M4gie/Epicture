@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Button,
-} from 'react-native';
+import {Text, View, StyleSheet, Button} from 'react-native';
 import LayoutContainer from '../components/layout/Layout';
 import CircleImage from '../components/image/CircleImage';
 import GridList from 'react-native-grid-list';
 import stylesheet from '../styles/styles';
 import AsyncStorage from '@react-native-community/async-storage';
+import SquareImage from '../components/image/SquareImage';
 
 const items = [
   {
@@ -59,17 +53,7 @@ const items = [
 ];
 
 class UserContainer extends React.Component {
-  renderItem = ({item, index}) => (
-    <View>
-      <TouchableOpacity
-        onPress={() => alert('image ' + (index + 1) + ' touched')}>
-        <Image
-          style={{width: '100%', height: '100%'}}
-          source={item.thumbnail}
-        />
-      </TouchableOpacity>
-    </View>
-  );
+  renderItem = ({item, index}) => <SquareImage item={item} index={index} />;
 
   _signOutAsync = async () => {
     await AsyncStorage.clear();
@@ -78,7 +62,7 @@ class UserContainer extends React.Component {
 
   render() {
     return (
-      <LayoutContainer title={'Profil'}>
+      <LayoutContainer title={'Profil'} font={''} fontSize={20}>
         <View style={styles.main_container}>
           <Button title="Déconnexion" onPress={this._signOutAsync} />
           <View style={[styles.banner, stylesheet.shadow_box]}>
