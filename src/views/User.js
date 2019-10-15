@@ -5,6 +5,7 @@ import CircleImage from '../components/image/CircleImage';
 import GridList from 'react-native-grid-list';
 import stylesheet from '../styles/styles';
 import AsyncStorage from "@react-native-community/async-storage";
+import token from "../shared/lib/Token";
 
 const items = [
   {
@@ -65,7 +66,7 @@ class UserContainer extends React.Component {
   );
 
   signout = async () => {
-        await AsyncStorage.clear();
+        await token.clearToken();
         this.props.navigation.navigate('Auth');
     };
 

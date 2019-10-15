@@ -6,7 +6,7 @@ import {
     StyleSheet,
     Text
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage'
+import token from "../../shared/lib/Token";
 
 class AuthLoadingContainer extends React.Component {
     componentDidMount() {
@@ -14,7 +14,7 @@ class AuthLoadingContainer extends React.Component {
     }
 
     _bootstrapAsync = async () => {
-        const userToken = await AsyncStorage.getItem('token');
+        const userToken = token.getToken();
         this.props.navigation.navigate(userToken ? 'App' : 'Auth');
     };
 

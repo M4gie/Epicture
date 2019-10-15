@@ -1,7 +1,8 @@
 import React from 'react';
 import {WebView} from "react-native-webview";
-import AsyncStorage from "@react-native-community/async-storage";
 import {Linking} from "react-native";
+import {API_IMGUR_CLIENT_ID} from "../../config";
+import token from "../../shared/lib/Token";
 
 
 class ImgurWebView extends React.Component {
@@ -16,7 +17,7 @@ class ImgurWebView extends React.Component {
             while (m = regex.exec(url)) {
                 params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
             }
-            await AsyncStorage.setItem('token', params.access_token);
+            await token.saveToken(params.access_token);
             this.props.navigation.navigate('App');
         }
     };
@@ -29,10 +30,8 @@ class ImgurWebView extends React.Component {
     }
 
     render() {
-        const clientId = "b8d3bae6d415563";
         return (
-            <WebView
-                source={{uri: `https://api.imgur.com/oauth2/authorize?client_id=${clientId}&response_type=token`}}/>
+            <WebView source={{uri: `https://api.imgur.com/oauth2/authorize?client_id=${API_IMGUR_CLIENT_ID}&response_type=token`}}/>
         );
     }
 };

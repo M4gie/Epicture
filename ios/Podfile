@@ -38,6 +38,8 @@ target 'ouistigram' do
 
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
+
   target 'ouistigramTests' do
     inherit! :search_paths
     # Pods for testing
