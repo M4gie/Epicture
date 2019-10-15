@@ -1,25 +1,21 @@
 import React from 'react';
-import {View, Button} from "react-native";
+import {View, Button, Linking} from "react-native";
 import AsyncStorage from '@react-native-community/async-storage'
 
 
 class AuthContainer extends React.Component {
-    static navigationOptions = {
-        title: 'Je suis la page pas belle',
+
+    connect = () => {
+        this.props.navigation.navigate('Login');
     };
 
     render() {
         return (
             <View>
-                <Button title="Connexion" onPress={this._signInAsync} />
+                <Button title="Connect with Imgur" onPress={this.connect}/>
             </View>
         );
     }
-
-    _signInAsync = async () => {
-        await AsyncStorage.setItem('userToken', 'abc');
-        this.props.navigation.navigate('App');
-    };
 }
 
 export default AuthContainer;

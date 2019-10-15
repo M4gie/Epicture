@@ -9,6 +9,7 @@ import FavoriteContainer from '../../views/Favorite';
 import UserContainer from '../../views/User';
 import AuthLoadingContainer from "../../views/Login/AuthLoading";
 import AuthContainer from "../../views/Login/Auth";
+import ImgurWebView from "../../views/Login/ImgurWebView";
 
 
 const bottomTabNavigator = createBottomTabNavigator(
@@ -63,7 +64,10 @@ const bottomTabNavigator = createBottomTabNavigator(
 );
 
 const AppStack = createAppContainer(bottomTabNavigator);
-const AuthStack = createStackNavigator({ SignIn: AuthContainer });
+const AuthStack = createStackNavigator({
+    SignIn: { screen: AuthContainer },
+    Login: { screen: ImgurWebView },
+    });
 
 export default createAppContainer(
     createSwitchNavigator(

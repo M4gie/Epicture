@@ -64,7 +64,7 @@ class UserContainer extends React.Component {
     </View>
   );
 
-    _signOutAsync = async () => {
+  signout = async () => {
         await AsyncStorage.clear();
         this.props.navigation.navigate('Auth');
     };
@@ -73,7 +73,7 @@ class UserContainer extends React.Component {
     return (
       <LayoutContainer title={'Profil'}>
         <View style={styles.main_container}>
-            <Button title="Deconnexion" onPress={this._signOutAsync} />
+            <Button title="Deconnexion" onPress={this.signout} />
             <View style={[styles.banner, stylesheet.shadow_box]}>
             <View style={styles.banner_content}>
               <View style={styles.picture}>
