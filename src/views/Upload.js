@@ -3,8 +3,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import LayoutContainer from './../components/layout/Layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import stylesheet from './../styles/styles';
-import GalleryPicker from "./../components/picker/GalleryPicker";
-import CameraPicker from "./../components/picker/CameraPicker";
+import GalleryPicker from './../components/picker/GalleryPicker';
+import CameraPicker from './../components/picker/CameraPicker';
 
 const UploadContainer = () => {
   return (
