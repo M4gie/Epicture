@@ -13,20 +13,20 @@ class AuthLoadingContainer extends React.Component {
     this._bootstrapAsync();
   }
 
-    _bootstrapAsync = async () => {
-        const userToken = await token.getToken();
-        this.props.navigation.navigate(userToken ? 'App' : 'Auth');
-    };
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem('userToken');
+    this.props.navigation.navigate(userToken ? 'App' : 'Auth');
+  };
 
-    render() {
-        return (
-            <View style={styles.main_container}>
-                <ActivityIndicator />
-                <Text style={styles.text}>Ça charge</Text>
-                <StatusBar barStyle="default" />
-            </View>
-        );
-    }
+  render() {
+    return (
+      <View style={styles.main_container}>
+        <ActivityIndicator size={'large'} />
+        <Text style={styles.text}>Ouistigram</Text>
+        <StatusBar barStyle="default" />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AuthLoadingContainer;
+export default AuthLoadingContainer
