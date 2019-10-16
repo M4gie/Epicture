@@ -36,6 +36,10 @@ target 'ouistigram' do
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
+
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'ouistigramTests' do
