@@ -52,7 +52,7 @@ const bottomTabNavigator = createBottomTabNavigator(
         initialRouteName: 'Home',
         tabBarOptions: {
             activeTintColor: 'white',
-            inactiveTintColor: 'white',
+            inactiveTintColor: 'grey',
             showLabel: false,
             keyboardHidesTabBar: false,
             style: {

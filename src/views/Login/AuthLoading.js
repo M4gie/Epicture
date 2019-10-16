@@ -14,7 +14,7 @@ class AuthLoadingContainer extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    const userToken = await token.getToken();
+    const userToken = await token.getToken('BearerToken');
     this.props.navigation.navigate(userToken ? 'App' : 'Auth');
   };
 

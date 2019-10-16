@@ -14,7 +14,8 @@ class LoginStatusContainer extends Component {
             while (m = regex.exec(url)) {
                 params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
             }
-            await token.saveToken(params.access_token);
+            await token.saveToken('BearerToken', params.access_token);
+            await token.saveToken('username', params.account_username);
             this.props.navigation.navigate('App');
         }
     };

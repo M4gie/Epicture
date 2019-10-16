@@ -8,21 +8,25 @@ import SquareImage from '../components/image/SquareImage';
 import AccountServices from '../services/account';
 
 class UserContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pictures: [],
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            pictures: [],
+            avatar: '',
+            username: '',
+            bio: ''
+        }
+    }
 
   renderItem(item) {
     return <SquareImage item={item} />;
   }
 
-  signout = async () => {
-    await token.clearToken();
-    this.props.navigation.navigate('Auth');
-  };
+    signout = async () => {
+        await token.clearToken('BearerToken');
+        await token.clearToken('username');
+        this.props.navigation.navigate('Auth');
+    };
 
   componentDidMount(): void {
     AccountServices.images(0)
@@ -42,62 +46,61 @@ class UserContainer extends React.Component {
         console.log(error);
       });
 
-    AccountServices.images(0)
-      .then(response => {
-        let picturesArr = response.data.map(picture => {
-          return {
-            thumbnail: {
-              uri: picture.link,
-            },
-            id: picture.id,
-          };
-        });
-        this.setState({pictures: picturesArr});
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+        AccountServices.avatar()
+            .then((response) => {
+                this.setState({avatar: response.data.avatar});
+            })
+            .catch((error) => {
+                console.log(error);
+            })
 
-  render() {
-    return (
-      <LayoutContainer title={'Profil'} font={''} fontSize={20}>
-        <View style={styles.main_container}>
-          <Button title="Déconnexion" onPress={this.signout} />
-          <View style={[styles.banner, stylesheet.shadow_box]}>
-            <View style={styles.banner_content}>
-              <View style={styles.picture}>
-                <CircleImage
-                  pic={
-                    'https://pbs.twimg.com/profile_images/606263942688735232/CUv5tizA_400x400.jpg'
-                  }
-                />
-              </View>
-              <View style={styles.infos}>
-                <Text
-                  style={[{fontSize: 30}, stylesheet.white, stylesheet.bold]}>
-                  Hit The Road
-                </Text>
-                <Text
-                  numberOfLines={3}
-                  style={[{fontSize: 14}, stylesheet.grey]}>
-                  NEW FEED ! FOLLOW: @clement.htr & @paulrdb ! YOUTUBE 325K
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.pictures}>
-            <FlatList
-              numColumns={3}
-              data={this.state.pictures}
-              keyExtractor={item => item.id.toString()}
-              renderItem={({item}) => this.renderItem(item)}
-            />
-          </View>
-        </View>
-      </LayoutContainer>
-    );
-  }
+        AccountServices.base()
+            .then(async (response) => {
+                this.setState({bio: response.data.bio});
+                this.setState({username: await token.getToken('username')});
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    render() {
+        return (
+            <LayoutContainer title={'Profil'} font={''} fontSize={20}>
+                <View style={styles.main_container}>
+                    <Button title="Déconnexion" onPress={this.signout}/>
+                    <View style={[styles.banner, stylesheet.shadow_box]}>
+                        <View style={styles.banner_content}>
+                            <View style={styles.picture}>
+                                <CircleImage
+                                    pic={this.state.avatar}
+                                />
+                            </View>
+                            <View style={styles.infos}>
+                                <Text
+                                    style={[{fontSize: 30}, stylesheet.white, stylesheet.bold]}>
+                                    {this.state.username}
+                                </Text>
+                                <Text
+                                    numberOfLines={3}
+                                    style={[{fontSize: 14}, stylesheet.grey]}>
+                                    {this.state.bio}
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.pictures}>
+                        <FlatList
+                            numColumns={3}
+                            data={this.state.pictures}
+                            renderItem={({item}) => this.renderItem(item)}
+                            keyExtractor={item => item.id.toString()}
+                        />
+                    </View>
+                </View>
+            </LayoutContainer>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
