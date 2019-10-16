@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, SafeAreaView} from 'react-native';
 import stylesheet from '../../styles/styles';
 
 const LayoutContainer = props => {
   const {title, font, fontSize} = props;
   return (
-    <>
+    <SafeAreaView>
       <View style={[styles.container, stylesheet.shadow_box]}>
         <Text
           style={[stylesheet.white, {fontFamily: font, fontSize: fontSize}]}>
@@ -13,7 +13,7 @@ const LayoutContainer = props => {
         </Text>
       </View>
       {props.children}
-    </>
+    </SafeAreaView>
   );
 };
 
