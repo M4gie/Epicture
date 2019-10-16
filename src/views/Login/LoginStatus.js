@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import token from "../../shared/lib/Token";
 import {Linking, Text, View} from "react-native";
+import token from "./../../shared/lib/Token";
 
 class LoginStatusContainer extends Component {
 

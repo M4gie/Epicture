@@ -1,8 +1,8 @@
 import React from 'react';
 import {WebView} from "react-native-webview";
-import {API_IMGUR_CLIENT_ID} from "../../config";
-import token from "../../shared/lib/Token";
 import {Linking} from "react-native";
+import {API_IMGUR_CLIENT_ID} from "./../../config";
+import token from "./../../shared/lib/Token";
 
 
 class ImgurWebView extends React.Component {
