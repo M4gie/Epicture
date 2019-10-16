@@ -5,8 +5,9 @@ import {
   View,
   StyleSheet,
   Text,
-} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+}
+ from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage'
 
 class AuthLoadingContainer extends React.Component {
   componentDidMount() {
@@ -45,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AuthLoadingContainer;
+export default AuthLoadingContainer

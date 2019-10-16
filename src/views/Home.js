@@ -12,7 +12,7 @@ const images = [
     id: 181808,
     image:
       'https://media.discordapp.net/attachments/630112847434874890/631947610525007902/image0.jpg?width=495&height=660',
-    username: 'grosse chatte',
+    username: 'Pierre',
     profilepic:
       'https://images-na.ssl-images-amazon.com/images/I/71c-O3GaxLL._SY450_.jpg',
     place: 'chez awesmosh',
@@ -71,7 +71,7 @@ const images = [
     place: 'Salle de bain',
     likes: "2 241 J'aime",
     description:
-      "Moi à la plage, Carjack m'avait sucé derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
+      "Moi à la plage, Carjack m'avait  derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
     comments: 12,
     title: 'Coworkers New Retriever Puppy !',
   },
@@ -125,7 +125,7 @@ const images = [
     place: 'Salle de bain',
     likes: "2 241 J'aime",
     description:
-      "Moi à la plage, Carjack m'avait sucé derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
+      "Moi à la plage, Carjack m'avait  derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
     comments: 12,
     title: 'Coworkers New Retriever Puppy !',
   },
@@ -179,7 +179,7 @@ const images = [
     place: 'Salle de bain',
     likes: "2 241 J'aime",
     description:
-      "Moi à la plage, Carjack m'avait sucé derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
+      "Moi à la plage, Carjack m'avait  derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
     comments: 12,
     title: 'Coworkers New Retriever Puppy !',
   },
@@ -233,7 +233,7 @@ const images = [
     place: 'Salle de bain',
     likes: "2 241 J'aime",
     description:
-      "Moi à la plage, Carjack m'avait sucé derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
+      "Moi à la plage, Carjack m'avait  derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
     comments: 12,
     title: 'Coworkers New Retriever Puppy !',
   },
@@ -287,7 +287,7 @@ const images = [
     place: 'Salle de bain',
     likes: "2 241 J'aime",
     description:
-      "Moi à la plage, Carjack m'avait sucé derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
+      "Moi à la plage, Carjack m'avait  derrière les dunes cétait trop cool meme que après Antje elle est venue elle m'a bouffé les couilles",
     comments: 12,
     title: 'Coworkers New Retriever Puppy !',
   },
