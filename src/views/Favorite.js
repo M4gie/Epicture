@@ -11,12 +11,9 @@ class FavoriteContainer extends React.Component {
         }
     }
 
-    /*renderItem = ({item, index}) => <SquareImage item={item} index={index}/>;*/
-
     renderItem(item) {
         return (
-            <TouchableOpacity
-                style={{flex:1/3, aspectRatio:1}}>
+            <TouchableOpacity style={{flex:1/3, aspectRatio:1}}>
                 <Image style={{flex: 1}} resizeMode='cover' source={item.thumbnail}/>
             </TouchableOpacity>
         )
