@@ -14,7 +14,7 @@ class AuthLoadingContainer extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    const userToken = await token.getToken('BearerToken');
+    const userToken = await token.getToken("BearerToken");
     this.props.navigation.navigate(userToken ? 'App' : 'Auth');
   };
 
@@ -34,15 +34,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'hsl(218,15%,15%)',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   text: {
     textAlign: 'center',
     fontSize: 35,
     color: 'white',
     marginVertical: 30,
-    fontFamily: 'Catalunyademo',
+    fontFamily: 'Catalunyademo'
   },
 });
 
-export default AuthLoadingContainer
+export default AuthLoadingContainer;

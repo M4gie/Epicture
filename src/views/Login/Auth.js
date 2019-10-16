@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Video from 'react-native-video';
 
 class AuthContainer extends React.Component {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 20,
     textAlign: 'center',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   appname: {
     fontFamily: 'Catalunyademo',
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     letterSpacing: 3,
     color: '#f4f4f4',
     textAlign: 'center',
-    textTransform: 'uppercase',
+    textTransform: 'uppercase'
   },
   buttonConnect: {
     marginTop: 50,
