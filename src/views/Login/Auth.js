@@ -11,7 +11,7 @@ class AuthContainer extends React.Component {
     return (
       <View style={styles.container}>
         <Video
-          source={require('../../assets/video/spin_cycle.mp4')}
+          source={require('./../../assets/video/spin_cycle.mp4')}
           rate={1.0}
           volume={1.0}
           muted={false}
@@ -95,6 +95,3 @@ const styles = StyleSheet.create({
 });
 
 export default AuthContainer;
-/*<View>
-    <Button title="Connect with Imgur" onPress={this.connect} />
-</View>*/

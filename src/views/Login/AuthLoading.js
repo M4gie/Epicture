@@ -14,7 +14,7 @@ class AuthLoadingContainer extends React.Component {
     }
 
     _bootstrapAsync = async () => {
-        const userToken = token.getToken();
+        const userToken = await token.getToken();
         this.props.navigation.navigate(userToken ? 'App' : 'Auth');
     };
 
@@ -22,7 +22,7 @@ class AuthLoadingContainer extends React.Component {
         return (
             <View style={styles.main_container}>
                 <ActivityIndicator />
-                <Text style={styles.text}>Ça charge bite</Text>
+                <Text style={styles.text}>Ça charge</Text>
                 <StatusBar barStyle="default" />
             </View>
         );

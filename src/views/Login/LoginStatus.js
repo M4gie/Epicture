@@ -1,11 +1,8 @@
-import React from 'react';
-import {WebView} from "react-native-webview";
-import {API_IMGUR_CLIENT_ID} from "../../config";
+import React, {Component} from 'react';
 import token from "../../shared/lib/Token";
-import {Linking} from "react-native";
+import {Linking, Text, View} from "react-native";
 
-
-class ImgurWebView extends React.Component {
+class LoginStatusContainer extends Component {
 
     navigate = async (url) => {
         if (url) {
@@ -17,7 +14,6 @@ class ImgurWebView extends React.Component {
             while (m = regex.exec(url)) {
                 params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
             }
-            console.log("TOKEN: ", params.access_token)
             await token.saveToken(params.access_token);
             this.props.navigation.navigate('App');
         }
@@ -31,9 +27,13 @@ class ImgurWebView extends React.Component {
 
     render() {
         return (
-            <WebView source={{uri: `https://api.imgur.com/oauth2/authorize?client_id=${API_IMGUR_CLIENT_ID}&response_type=token`}}/>
+            <View>
+                <Text>
+                    Login Status
+                </Text>
+            </View>
         );
     }
-};
+}
 
-export default ImgurWebView;
+export default LoginStatusContainer;
