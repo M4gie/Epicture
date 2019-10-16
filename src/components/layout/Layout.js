@@ -5,7 +5,7 @@ import stylesheet from '../../styles/styles';
 const LayoutContainer = props => {
   const {title, font, fontSize} = props;
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.safeArea}>
       <View style={[styles.container, stylesheet.shadow_box]}>
         <Text
           style={[stylesheet.white, {fontFamily: font, fontSize: fontSize}]}>
@@ -18,6 +18,10 @@ const LayoutContainer = props => {
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1
+  },
+
   container: {
     justifyContent: 'center',
     alignItems: 'center',
