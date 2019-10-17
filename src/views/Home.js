@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, FlatList, StyleSheet} from 'react-native';
-import {SearchBar} from 'react-native-elements';
+import { View, FlatList, StyleSheet } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 import LayoutContainer from '../components/layout/Layout';
 import ImageView from '../components/image/ImageView';
 import stylesheet from '../styles/styles';
+import GalleryServices from "../services/gallery";
 
 // Helpers/filmsData.js
 
@@ -19,7 +20,7 @@ const images = [
     likes: "2 241 J'aime",
     description: 'Je suis le petit chat miaou je suis moche',
     comments: 12,
-    title: 'Je suis un chat oui oui oui miaou miaou regardez moi',
+    title: 'Je suis un chat oui oui oui miaou miaou regardez moi'
   },
   {
     id: 181811,
@@ -32,38 +33,65 @@ const images = [
     likes: "193 J'aime",
     description: "Moi à New York c'était cool j'ai mangé des hambourgeurs",
     comments: 27,
-    title: 'Sometimes i feel watched',
+    title: 'Sometimes i feel watched'
   },
 ];
 
 class HomeContainer extends React.Component {
-  state = {
-    search: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      gallery: []
+    };
+  }
+
+  componentDidMount(): void {
+    GalleryServices.gallery(0)
+      .then(response => {
+        let mainFlow = response.data.map(element => {
+          if (element.images) {
+            console.log(element.images[0]);
+            return {
+              id: element .id,
+              image: element.images[0].link,
+              favorite: element.favorite
+            };
+          }
+        });
+        let mainFlowFiltered = mainFlow.filter(function(el) {
+          return el != undefined;
+        });
+        this.setState({ gallery: mainFlowFiltered });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   updateSearch = search => {
-    this.setState({search});
+    this.setState({ search });
   };
 
   render() {
-    const {search} = this.state;
+    const { search } = this.state;
     return (
       <LayoutContainer
         title={'Ouistigram'}
         font={'Catalunyademo'}
-        fontSize={30}>
+        fontSize={30}
+      >
         <SearchBar
-          inputContainerStyle={{borderRadius: 50}}
-          containerStyle={[stylesheet.shadow_box, {borderTopWidth: 0}]}
+          inputContainerStyle={{ borderRadius: 50 }}
+          containerStyle={[stylesheet.shadow_box, { borderTopWidth: 0 }]}
           placeholder="Rechercher..."
           onChangeText={this.updateSearch}
           value={search}
         />
         <View style={styles.main_container}>
           <FlatList
-            data={images}
+            data={this.state.gallery}
             keyExtractor={item => item.id.toString()}
-            renderItem={({item}) => <ImageView image={item} />}
+            renderItem={({ item }) => <ImageView image={item} />}
           />
         </View>
       </LayoutContainer>
@@ -74,7 +102,7 @@ class HomeContainer extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: 'hsl(218,15%,15%)',
+    backgroundColor: 'hsl(218,15%,15%)'
   },
   textinput: {
     marginLeft: 5,

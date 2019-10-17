@@ -3,7 +3,7 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import FavoriteService from '../services/image';
+import AlbumServices from "../services/album";
 
 class Favorite extends React.Component {
   constructor(props) {
@@ -14,9 +14,9 @@ class Favorite extends React.Component {
   }
 
   handleFavorite = imageHash => {
-    this.setState({favorite: !this.state.favorite});
-    FavoriteService.favorite(imageHash)
+    AlbumServices.favorite(imageHash)
       .then(response => {
+        this.setState({favorite: !this.state.favorite});
         console.log(response);
       })
       .catch(error => {

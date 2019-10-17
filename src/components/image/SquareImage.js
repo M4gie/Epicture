@@ -5,9 +5,7 @@ import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 class SquareImage extends React.Component {
   render() {
-    console.log('je passe dans le meilleur ocmponent');
     const item = this.props.item;
-    console.log(item.thumbnail);
 
     return (
       <TouchableOpacity

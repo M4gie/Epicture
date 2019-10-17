@@ -1,17 +1,19 @@
 import request from '../shared/lib/AxiosWrap'
+import token from "../shared/lib/Token";
 
-function token(token) {
+async function favorite(albumId) {
+    const bearerToken = await token.getToken('BearerToken');
     return request({
-        url: `/token`,
+        url: `/album/${albumId}/favorite`,
         method: 'POST',
         headers: {
-            Authorization: ` Bearer ${token}`
-        }
+            Authorization: `Bearer ${bearerToken}`,
+        },
     });
 }
 
 const AlbumServices = {
-    token
+    favorite
 };
 
 export default AlbumServices;

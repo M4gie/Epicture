@@ -36,7 +36,7 @@ class ImageView extends React.Component {
         </View>
 
         <View style={styles.bottomview}>
-          <Favorite iconSize={20} />
+          <Favorite iconSize={20} favorite={image.favorite} imageHash={image.id}/>
           <Text numberOfLines={2} style={[stylesheet.bold, stylesheet.white]}>
             {image.username}
             <Text style={{fontWeight: '200'}}> {image.description}</Text>
