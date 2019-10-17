@@ -3,7 +3,7 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import AlbumServices from "../services/album";
+import AlbumServices from '../../services/album';
 
 class Favorite extends React.Component {
   constructor(props) {
@@ -27,7 +27,9 @@ class Favorite extends React.Component {
   render() {
     const {imageHash, iconSize} = this.props;
     return (
-      <TouchableOpacity onPress={() => this.handleFavorite(imageHash)}>
+      <TouchableOpacity
+        style={{marginHorizontal: 5}}
+        onPress={() => this.handleFavorite(imageHash)}>
         <Icon
           name={'heart'}
           color={this.state.favorite ? 'red' : 'grey'}

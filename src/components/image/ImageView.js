@@ -4,7 +4,8 @@ import React from 'react';
 import {StyleSheet, View, Image, Text} from 'react-native';
 import stylesheet from '../../styles/styles';
 import CircleImage from './CircleImage';
-import Favorite from '../Favorite';
+import Favorite from '../vote/Favorite';
+import UpDown from '../vote/UpDown';
 
 class ImageView extends React.Component {
   render() {
@@ -36,15 +37,27 @@ class ImageView extends React.Component {
         </View>
 
         <View style={styles.bottomview}>
-          <Favorite iconSize={20} favorite={image.favorite} imageHash={image.id}/>
-          <Text numberOfLines={2} style={[stylesheet.bold, stylesheet.white]}>
-            {image.username}
-            <Text style={{fontWeight: '200'}}> {image.description}</Text>
-          </Text>
-          <Text style={stylesheet.grey}>
-            Voir les {image.comments} commentaires
-          </Text>
+          <View style={{flexDirection: 'row'}}>
+            <UpDown
+              imageHash={image.imageHash}
+              ups={image.ups}
+              down={image.downs}
+              vote={image.vote}
+            />
+            <Favorite
+              iconSize={20}
+              favorite={image.favorite}
+              imageHash={image.id}
+            />
+          </View>
         </View>
+        <Text numberOfLines={2} style={[stylesheet.bold, stylesheet.white]}>
+          {image.username}
+          <Text style={{fontWeight: '200'}}> {image.description}</Text>
+        </Text>
+        <Text style={stylesheet.grey}>
+          Voir les {image.comments} commentaires
+        </Text>
       </View>
     );
   }

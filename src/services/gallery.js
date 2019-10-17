@@ -1,6 +1,6 @@
 import request from '../shared/lib/AxiosWrap';
-import { API_IMGUR_CLIENT_ID } from "../config";
-import token from "../shared/lib/Token";
+import {API_IMGUR_CLIENT_ID} from '../config';
+import token from '../shared/lib/Token';
 
 async function gallery(page) {
   const bearerToken = await token.getToken('BearerToken');
@@ -9,7 +9,7 @@ async function gallery(page) {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${bearerToken}`,
-    }
+    },
   });
 }
 
@@ -20,13 +20,35 @@ async function gallerySearch(page, search) {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${bearerToken}`,
-    }
+    },
+  });
+}
+
+function Album(token, id) {
+  return request({
+    url: `/gallery/album/${id}`,
+    method: 'GET',
+    headers: {
+      Authorization: `Client-ID ${API_IMGUR_CLIENT_ID}`,
+    },
+  });
+}
+
+function voting(galleryHash, vote) {
+  return request({
+    url: `gallery/${galleryHash}/vote/${vote}`,
+    method: 'POST',
+    headers: {
+      Authorization: `Client-ID ${API_IMGUR_CLIENT_ID}`,
+    },
   });
 }
 
 const GalleryServices = {
   gallery,
-  gallerySearch
+  gallerySearch,
+  Album,
+  voting,
 };
 
 export default GalleryServices;
