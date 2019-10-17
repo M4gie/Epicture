@@ -8,25 +8,25 @@ import SquareImage from '../components/image/SquareImage';
 import AccountServices from '../services/account';
 
 class UserContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pictures: [],
-            avatar: '',
-            username: '',
-            bio: ''
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      pictures: [],
+      avatar: '',
+      username: '',
+      bio: '',
+    };
+  }
 
   renderItem(item) {
     return <SquareImage item={item} />;
   }
 
-    signout = async () => {
-        await token.clearToken('BearerToken');
-        await token.clearToken('username');
-        this.props.navigation.navigate('Auth');
-    };
+  signout = async () => {
+    await token.clearToken('BearerToken');
+    await token.clearToken('username');
+    this.props.navigation.navigate('Auth');
+  };
 
   componentDidMount(): void {
     AccountServices.images(0)
@@ -46,61 +46,59 @@ class UserContainer extends React.Component {
         console.log(error);
       });
 
-        AccountServices.avatar()
-            .then((response) => {
-                this.setState({avatar: response.data.avatar});
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+    AccountServices.avatar()
+      .then(response => {
+        this.setState({avatar: response.data.avatar});
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
-        AccountServices.base()
-            .then(async (response) => {
-                this.setState({bio: response.data.bio});
-                this.setState({username: await token.getToken('username')});
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
+    AccountServices.base()
+      .then(async response => {
+        this.setState({bio: response.data.bio});
+        this.setState({username: await token.getToken('username')});
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
-    render() {
-        return (
-            <LayoutContainer title={'Profil'} font={''} fontSize={20}>
-                <View style={styles.main_container}>
-                    <Button title="Déconnexion" onPress={this.signout}/>
-                    <View style={[styles.banner, stylesheet.shadow_box]}>
-                        <View style={styles.banner_content}>
-                            <View style={styles.picture}>
-                                <CircleImage
-                                    pic={this.state.avatar}
-                                />
-                            </View>
-                            <View style={styles.infos}>
-                                <Text
-                                    style={[{fontSize: 30}, stylesheet.white, stylesheet.bold]}>
-                                    {this.state.username}
-                                </Text>
-                                <Text
-                                    numberOfLines={3}
-                                    style={[{fontSize: 14}, stylesheet.grey]}>
-                                    {this.state.bio}
-                                </Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.pictures}>
-                        <FlatList
-                            numColumns={3}
-                            data={this.state.pictures}
-                            renderItem={({item}) => this.renderItem(item)}
-                            keyExtractor={item => item.id.toString()}
-                        />
-                    </View>
-                </View>
-            </LayoutContainer>
-        );
-    }
+  render() {
+    return (
+      <LayoutContainer title={'Profil'} font={''} fontSize={20}>
+        <View style={styles.main_container}>
+          <Button title="Déconnexion" onPress={this.signout} />
+          <View style={[styles.banner, stylesheet.shadow_box]}>
+            <View style={styles.banner_content}>
+              <View style={styles.picture}>
+                <CircleImage pic={this.state.avatar} />
+              </View>
+              <View style={styles.infos}>
+                <Text
+                  style={[{fontSize: 30}, stylesheet.white, stylesheet.bold]}>
+                  {this.state.username}
+                </Text>
+                <Text
+                  numberOfLines={3}
+                  style={[{fontSize: 14}, stylesheet.grey]}>
+                  {this.state.bio}
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.pictures}>
+            <FlatList
+              numColumns={3}
+              data={this.state.pictures}
+              renderItem={({item}) => this.renderItem(item)}
+              keyExtractor={item => item.id.toString()}
+            />
+          </View>
+        </View>
+      </LayoutContainer>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
