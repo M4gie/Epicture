@@ -5,7 +5,6 @@ import LayoutContainer from '../components/layout/Layout';
 import ImageView from '../components/image/ImageView';
 import stylesheet from '../styles/styles';
 import GalleryServices from "../services/gallery";
-import AccountServices from "../services/account";
 
 const images = [
   {
@@ -80,10 +79,33 @@ class HomeContainer extends React.Component {
 
   updateSearch = search => {
     this.setState({ search });
+    GalleryServices.gallerySearch(0, search)
+      .then(response => {
+        let mainFlow = response.data.map(element => {
+          if (element.images) {
+            return {
+              id: element.id,
+              image: element.images[0].link,
+              favorite: element.favorite,
+              ups: element.ups,
+              downs: element.downs,
+              title: element.title,
+              vote: element.vote,
+              description: element.images[0].description,
+            };
+          }
+        });
+        let mainFlowFiltered = mainFlow.filter(function(el) {
+          return el != undefined;
+        });
+        this.setState({ gallery: mainFlowFiltered });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   render() {
-    const { search } = this.state;
     return (
       <LayoutContainer
         title={'Ouistigram'}
@@ -95,7 +117,7 @@ class HomeContainer extends React.Component {
           containerStyle={[stylesheet.shadow_box, { borderTopWidth: 0 }]}
           placeholder="Rechercher..."
           onChangeText={this.updateSearch}
-          value={search}
+          value={this.state.search}
         />
         <View style={styles.main_container}>
           <FlatList
