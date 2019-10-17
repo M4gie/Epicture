@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import {View, FlatList, StyleSheet} from 'react-native';
+import {SearchBar} from 'react-native-elements';
 import LayoutContainer from '../components/layout/Layout';
 import ImageView from '../components/image/ImageView';
 import stylesheet from '../styles/styles';
-import GalleryServices from "../services/gallery";
+import GalleryServices from '../services/gallery';
+import CustomSearch from '../components/search/CustomSearch';
 
 const images = [
   {
@@ -18,7 +19,7 @@ const images = [
     likes: "2 241 J'aime",
     description: 'Je suis le petit chat miaou je suis moche',
     comments: 12,
-    title: 'Je suis un chat oui oui oui miaou miaou regardez moi'
+    title: 'Je suis un chat oui oui oui miaou miaou regardez moi',
   },
   {
     id: 181811,
@@ -31,7 +32,7 @@ const images = [
     likes: "193 J'aime",
     description: "Moi à New York c'était cool j'ai mangé des hambourgeurs",
     comments: 27,
-    title: 'Sometimes i feel watched'
+    title: 'Sometimes i feel watched',
   },
 ];
 
@@ -39,7 +40,7 @@ class HomeContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gallery: []
+      gallery: [],
     };
   }
 
@@ -70,7 +71,7 @@ class HomeContainer extends React.Component {
         let mainFlowFiltered = mainFlow.filter(function(el) {
           return el != undefined;
         });
-        this.setState({ gallery: mainFlowFiltered });
+        this.setState({gallery: mainFlowFiltered});
       })
       .catch(error => {
         console.log(error);
@@ -78,7 +79,7 @@ class HomeContainer extends React.Component {
   }
 
   updateSearch = search => {
-    this.setState({ search });
+    this.setState({search});
     GalleryServices.gallerySearch(0, search)
       .then(response => {
         let mainFlow = response.data.map(element => {
@@ -98,7 +99,7 @@ class HomeContainer extends React.Component {
         let mainFlowFiltered = mainFlow.filter(function(el) {
           return el != undefined;
         });
-        this.setState({ gallery: mainFlowFiltered });
+        this.setState({gallery: mainFlowFiltered});
       })
       .catch(error => {
         console.log(error);
@@ -110,20 +111,16 @@ class HomeContainer extends React.Component {
       <LayoutContainer
         title={'Ouistigram'}
         font={'Catalunyademo'}
-        fontSize={30}
-      >
-        <SearchBar
-          inputContainerStyle={{ borderRadius: 50 }}
-          containerStyle={[stylesheet.shadow_box, { borderTopWidth: 0 }]}
-          placeholder="Rechercher..."
-          onChangeText={this.updateSearch}
-          value={this.state.search}
+        fontSize={30}>
+        <CustomSearch
+          search={this.state.search}
+          updateSearch={this.updateSearch}
         />
         <View style={styles.main_container}>
           <FlatList
             data={this.state.gallery}
             keyExtractor={item => item.id.toString()}
-            renderItem={({ item }) => <ImageView image={item} />}
+            renderItem={({item}) => <ImageView image={item} />}
           />
         </View>
       </LayoutContainer>
@@ -134,7 +131,7 @@ class HomeContainer extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: 'hsl(218,15%,15%)'
+    backgroundColor: 'hsl(218,15%,15%)',
   },
   textinput: {
     marginLeft: 5,

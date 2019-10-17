@@ -4,6 +4,7 @@ import stylesheet from '../../styles/styles';
 import CircleImage from './CircleImage';
 import Favorite from '../vote/Favorite';
 import UpDown from '../vote/UpDown';
+import Lightbox from 'react-native-lightbox';
 
 class ImageView extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class ImageView extends React.Component {
       <View style={styles.main_container}>
         <View style={styles.topview}>
           <View style={{width: 60, padding: 5}}>
-            <CircleImage size={60} pic={image.profilepic}/>
+            <CircleImage size={60} pic={image.profilepic} />
           </View>
           <View
             style={{
@@ -31,7 +32,7 @@ class ImageView extends React.Component {
         </View>
 
         <View style={styles.image}>
-          <Image source={{uri: image.image}} style={{flex: 1}}/>
+          <Image source={{uri: image.image}} style={{flex: 1}} />
         </View>
 
         <View style={styles.bottomview}>
