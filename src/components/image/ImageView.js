@@ -13,7 +13,7 @@ class ImageView extends React.Component {
       <View style={styles.main_container}>
         <View style={styles.topview}>
           <View style={{width: 60, padding: 5}}>
-            <CircleImage size={60} pic={image.profilepic} />
+            <CircleImage size={60} pic={image.profilepic}/>
           </View>
           <View
             style={{
@@ -31,7 +31,7 @@ class ImageView extends React.Component {
         </View>
 
         <View style={styles.image}>
-          <Image source={{uri: image.image}} style={{flex: 1}} />
+          <Image source={{uri: image.image}} style={{flex: 1}}/>
         </View>
 
         <View style={styles.bottomview}>
@@ -48,14 +48,11 @@ class ImageView extends React.Component {
               imageHash={image.id}
             />
           </View>
+          <Text numberOfLines={2} style={[stylesheet.bold, stylesheet.white]}>
+            {image.username}
+            <Text style={{fontWeight: '200'}}> {image.description}</Text>
+          </Text>
         </View>
-        <Text numberOfLines={2} style={[stylesheet.bold, stylesheet.white]}>
-          {image.username}
-          <Text style={{fontWeight: '200'}}> {image.description}</Text>
-        </Text>
-        <Text style={stylesheet.grey}>
-          Voir les {image.comments} commentaires
-        </Text>
       </View>
     );
   }
