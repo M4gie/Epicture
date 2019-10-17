@@ -54,7 +54,7 @@ class UserContainer extends React.Component {
         console.log(error);
       });
 
-    AccountServices.base()
+      AccountServices.baseMe()
       .then(async response => {
         this.setState({bio: response.data.bio});
         this.setState({username: await token.getToken('username')});

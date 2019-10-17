@@ -20,7 +20,7 @@ class DownVote extends React.Component {
         <Text style={stylesheet.white}>
           <Icon
             name={'arrow-down'}
-            color={vote ? 'red' : 'grey'}
+            color={vote === "down" ? 'red' : 'grey'}
             size={iconSize}
           />{' '}
           {downs}

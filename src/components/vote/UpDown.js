@@ -1,10 +1,10 @@
 // UpDown.js
 
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import UpVote from './UpVote';
-import DownVote from './DownVote';
-import GalleryService from '../../services/gallery';
+import { StyleSheet, View } from 'react-native';
+import GalleryService from "../../services/gallery";
+import UpVote from "./UpVote";
+import DownVote from "./DownVote";
 
 class UpDown extends React.Component {
   constructor(props) {
@@ -17,31 +17,28 @@ class UpDown extends React.Component {
   }
 
   handleVote = (newVote, imageHash) => {
+    let isDown = this.state.vote === 'down';
+    let isUp = this.state.vote === 'up';
+
     if (newVote === 'up') {
-      GalleryService.voting(imageHash, this.state.vote === 'up' ? 'veto' : 'up')
-        .then(response => {
-          console.log(response);
+      GalleryService.voting(imageHash, isUp ? 'veto' : 'up')
+        .then(() => {
           this.setState({
-            vote: this.state.vote === 'up' ? null : 'up',
-            ups: this.state.vote === 'up' ? this.state.ups + 1 : this.state.ups,
+            vote: isUp ? null : 'up',
+            ups: isUp ? this.state.ups - 1 : this.state.ups + 1,
+            downs: isDown ? this.state.downs - 1 : this.state.downs
           });
         })
         .catch(error => {
           console.log(error);
         });
     } else if (newVote === 'down') {
-      GalleryService.voting(
-        imageHash,
-        this.state.vote === 'down' ? 'veto' : 'down',
-      )
-        .then(response => {
-          console.log(response);
+      GalleryService.voting(imageHash, isDown ? 'veto' : 'down')
+        .then(() => {
           this.setState({
-            vote: this.state.vote === 'down' ? null : 'down',
-            downs:
-              this.state.vote === 'down'
-                ? this.state.downs + 1
-                : this.state.downs,
+            vote: isDown ? null : 'down',
+            downs: isDown ? this.state.downs - 1 : this.state.downs + 1,
+            ups: isUp ? this.state.ups - 1 : this.state.ups
           });
         })
         .catch(error => {
@@ -54,7 +51,7 @@ class UpDown extends React.Component {
     const imageHash = this.props.imageHash;
 
     return (
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <UpVote
           iconSize={20}
           ups={this.state.ups}

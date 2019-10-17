@@ -1,4 +1,4 @@
-import request from '../shared/lib/AxiosWrap'
+import request from '../shared/lib/AxiosWrap';
 import token from "../shared/lib/Token";
 
 async function favorite(albumId) {

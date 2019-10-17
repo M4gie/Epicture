@@ -21,7 +21,7 @@ class UpVote extends React.Component {
         <Text style={stylesheet.white}>
           <Icon
             name={'arrow-up'}
-            color={vote ? 'green' : 'grey'}
+            color={vote === "up" ? 'green' : 'grey'}
             size={iconSize}
           />{' '}
           {ups}

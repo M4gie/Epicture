@@ -1,5 +1,3 @@
-// ImageView.js
-
 import React from 'react';
 import {StyleSheet, View, Image, Text} from 'react-native';
 import stylesheet from '../../styles/styles';
@@ -39,9 +37,9 @@ class ImageView extends React.Component {
         <View style={styles.bottomview}>
           <View style={{flexDirection: 'row'}}>
             <UpDown
-              imageHash={image.imageHash}
+              imageHash={image.id}
               ups={image.ups}
-              down={image.downs}
+              downs={image.downs}
               vote={image.vote}
             />
             <Favorite

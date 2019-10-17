@@ -35,13 +35,24 @@ async function avatar() {
   });
 }
 
-async function base() {
-  const username = await token.getToken('username');
+async function base(username) {
+  const bearerToken = await token.getToken('BearerToken');
   return request({
-    url: `/account/${username}`,
+    url: `/account?account_id=${username}`,
     method: 'GET',
     headers: {
-      Authorization: `Client-ID ${API_IMGUR_CLIENT_ID}`
+      Authorization: `Bearer ${bearerToken}`
+    }
+  });
+}
+
+async function baseMe() {
+  const bearerToken = await token.getToken('BearerToken');
+  return request({
+    url: `/account/me`,
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${bearerToken}`
     }
   });
 }
@@ -50,7 +61,8 @@ const AccountServices = {
   images,
   favorites,
   avatar,
-  base
+  base,
+  baseMe
 };
 
 export default AccountServices;

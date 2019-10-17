@@ -5,8 +5,7 @@ import LayoutContainer from '../components/layout/Layout';
 import ImageView from '../components/image/ImageView';
 import stylesheet from '../styles/styles';
 import GalleryServices from "../services/gallery";
-
-// Helpers/filmsData.js
+import AccountServices from "../services/account";
 
 const images = [
   {
@@ -50,11 +49,22 @@ class HomeContainer extends React.Component {
       .then(response => {
         let mainFlow = response.data.map(element => {
           if (element.images) {
-            console.log(element.images[0]);
+            /*AccountServices.base(element.account_id)
+              .then(result => {
+
+              })
+              .catch(error => {
+                console.log(error);
+              });*/
             return {
-              id: element .id,
+              id: element.id,
               image: element.images[0].link,
-              favorite: element.favorite
+              favorite: element.favorite,
+              ups: element.ups,
+              downs: element.downs,
+              title: element.title,
+              vote: element.vote,
+              description: element.images[0].description,
             };
           }
         });
