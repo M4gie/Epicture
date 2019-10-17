@@ -4,6 +4,7 @@ import React from 'react';
 import {StyleSheet, View, Image, Text} from 'react-native';
 import stylesheet from '../../styles/styles';
 import CircleImage from './CircleImage';
+import Favorite from '../Favorite';
 
 class ImageView extends React.Component {
   render() {
@@ -35,7 +36,7 @@ class ImageView extends React.Component {
         </View>
 
         <View style={styles.bottomview}>
-          <Text style={[stylesheet.bold, stylesheet.white]}>{image.likes}</Text>
+          <Favorite iconSize={20} />
           <Text numberOfLines={2} style={[stylesheet.bold, stylesheet.white]}>
             {image.username}
             <Text style={{fontWeight: '200'}}> {image.description}</Text>
