@@ -13,10 +13,10 @@ async function gallery(page) {
   });
 }
 
-async function gallerySearch(page, search) {
+async function gallerySearch(page, search, sort) {
   const bearerToken = await token.getToken('BearerToken');
   return request({
-    url: `https://api.imgur.com/3/gallery/search/viral/all/${page}?q=${search}`,
+    url: `https://api.imgur.com/3/gallery/search/${sort}/all/${page}?q=${search}`,
     method: 'GET',
     headers: {
       Authorization: `Bearer ${bearerToken}`,

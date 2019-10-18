@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 class CustomSearch extends React.Component {
   render() {
-    const {updateSearch, search} = this.props;
+    const {updateSearch, changeSort, search, sort} = this.props;
 
     return (
       <View style={[styles.search_container, stylesheet.shadow_box]}>
@@ -17,13 +17,14 @@ class CustomSearch extends React.Component {
             inputContainerStyle={{borderRadius: 50}}
             containerStyle={[stylesheet.shadow_box, styles.search]}
             placeholder="Rechercher..."
-            onChangeText={(search) => updateSearch(search)}
+            onChangeText={search => updateSearch(search)}
             value={search}
           />
         </View>
         <View style={styles.filter_view}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => changeSort()}>
             <Icon name={'filter'} color={'white'} size={20} />
+            <Text style={stylesheet.white}>{sort}</Text>
           </TouchableOpacity>
         </View>
       </View>
