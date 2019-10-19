@@ -42,6 +42,8 @@ target 'ouistigram' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
+
   target 'ouistigramTests' do
     inherit! :search_paths
     # Pods for testing
