@@ -4,7 +4,7 @@ import Video from 'react-native-video';
 
 const AuthContainer = props => {
   const connect = () => {
-    this.props.navigation.navigate('Login');
+    props.navigation.navigate('Login');
   };
 
   return (
