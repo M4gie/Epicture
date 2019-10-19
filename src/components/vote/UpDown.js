@@ -1,7 +1,7 @@
 // UpDown.js
 
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import GalleryService from "../../services/gallery";
 import UpVote from "./UpVote";
 import DownVote from "./DownVote";
@@ -70,7 +70,5 @@ class UpDown extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});
 
 export default UpDown;
