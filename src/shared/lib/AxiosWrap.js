@@ -24,7 +24,6 @@ const request = function(options) {
   };
 
   const onError = function(error) {
-    console.log("API_HOST: ", API_HOST);
     console.debug('Request Failed:', error.config);
     if (error.response) {
       console.debug('Status:', error.response.status);
