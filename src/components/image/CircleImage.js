@@ -4,13 +4,13 @@ import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
 const CircleImage = props => {
-  const { size, pic } = props;
+  const { width, pic } = props;
 
   return (
     <Image
       resizeMode={'cover'}
       source={{ uri: pic }}
-      style={[styles.img_circle, { width: size, height: size }]}
+      style={[styles.img_circle, { width: width, height: width }]}
     />
   );
 };
