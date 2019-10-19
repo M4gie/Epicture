@@ -1,22 +1,27 @@
 // SquareImage.js
 
 import React from 'react';
-import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-class SquareImage extends React.Component {
-  render() {
-    const item = this.props.item;
+const SquareImage = props => {
+  const { item } = props.item;
 
-    return (
-      <TouchableOpacity
-        style={{flex: 1 / 3, aspectRatio: 1, padding: 1}}
-        onPress={() => alert('image touched')}>
-        <Image style={{flex: 1}} resizeMode="cover" source={item.thumbnail} />
-      </TouchableOpacity>
-    );
-  }
-}
+  return (
+    <TouchableOpacity
+      style={styles.imageContainer}
+      onPress={() => alert('image touched')}
+    >
+      <Image style={{ flex: 1 }} resizeMode="cover" source={item.thumbnail} />
+    </TouchableOpacity>
+  );
+};
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  imageContainer: {
+    flex: 1 / 3,
+    aspectRatio: 1,
+    padding: 1,
+  },
+});
 
 export default SquareImage;
