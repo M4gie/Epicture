@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View, Text} from 'react-native';
 import LayoutContainer from '../components/layout/Layout';
 import AccountServices from '../services/account';
 import SquareImage from '../components/image/SquareImage';
@@ -40,12 +40,18 @@ class FavoriteContainer extends React.Component {
       <LayoutContainer title={'Favoris'} font={''} fontSize={20}>
         <View style={styles.main_container}>
           <View style={styles.pictures}>
-            <FlatList
-              numColumns={3}
-              data={this.state.favorites}
-              keyExtractor={item => item.id.toString()}
-              renderItem={({item}) => this.renderItem(item)}
-            />
+            {this.state.favorites ? (
+              <FlatList
+                numColumns={3}
+                data={this.state.favorites}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({item}) => this.renderItem(item)}
+              />
+            ) : (
+              <Text style={{color: 'white', textAlign: 'center'}}>
+                Pas de favoris.
+              </Text>
+            )}
           </View>
         </View>
       </LayoutContainer>

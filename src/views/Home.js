@@ -18,7 +18,11 @@ class HomeContainer extends React.Component {
   }
 
   componentDidMount(): void {
-    GalleryServices.gallery(0)
+    this.getGallery();
+  }
+
+  getGallery = () => {
+    GalleryServices.gallery(0, this.state.sort)
       .then(response => {
         let mainFlow = response.data.map(element => {
           if (element.images) {
@@ -30,6 +34,7 @@ class HomeContainer extends React.Component {
               downs: element.downs,
               title: element.title,
               vote: element.vote,
+              username: element.account_url,
               description: element.images[0].description,
             };
           }
@@ -42,7 +47,7 @@ class HomeContainer extends React.Component {
       .catch(error => {
         console.log(error);
       });
-  }
+  };
 
   updateSearch = search => {
     this.setState({search});
@@ -58,6 +63,7 @@ class HomeContainer extends React.Component {
               downs: element.downs,
               title: element.title,
               vote: element.vote,
+              username: element.account_url,
               description: element.images[0].description,
             };
           }
@@ -81,7 +87,11 @@ class HomeContainer extends React.Component {
     } else {
       this.state.sort = sorts[sort_index + 1];
     }
-    this.updateSearch(this.state.search);
+    if (this.state.search !== '') {
+      this.updateSearch(this.state.search);
+    } else {
+      this.getGallery();
+    }
   };
 
   render() {

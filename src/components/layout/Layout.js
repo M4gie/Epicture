@@ -19,7 +19,7 @@ const LayoutContainer = props => {
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1
+    flex: 1,
   },
 
   container: {

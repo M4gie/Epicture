@@ -14,7 +14,7 @@ class ImageView extends React.Component {
       <View style={styles.main_container}>
         <View style={styles.topview}>
           <View style={{width: 60, padding: 5}}>
-            <CircleImage size={60} pic={image.profilepic} />
+            <CircleImage size={60} pic={image.profilepic ? image.profilepic : 'https://i.imgur.com/mCHMpLT.png?3'} />
           </View>
           <View
             style={{
@@ -23,7 +23,7 @@ class ImageView extends React.Component {
               padding: 5,
             }}>
             <Text style={[stylesheet.bold, stylesheet.white]}>
-              {image.title}
+              {image.title ? image.title : 'Pas de titre'}
             </Text>
             <Text style={[{fontSize: 12}, stylesheet.grey]}>
               {image.username}
@@ -36,7 +36,7 @@ class ImageView extends React.Component {
         </View>
 
         <View style={styles.bottomview}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row', marginBottom: 5}}>
             <UpDown
               imageHash={image.id}
               ups={image.ups}
@@ -51,7 +51,10 @@ class ImageView extends React.Component {
           </View>
           <Text numberOfLines={2} style={[stylesheet.bold, stylesheet.white]}>
             {image.username}
-            <Text style={{fontWeight: '200'}}> {image.description}</Text>
+            <Text style={{fontWeight: '200'}}>
+              {' '}
+              {image.description ? image.description : 'Pas de description'}
+            </Text>
           </Text>
         </View>
       </View>

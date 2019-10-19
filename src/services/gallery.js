@@ -2,10 +2,10 @@ import request from '../shared/lib/AxiosWrap';
 import {API_IMGUR_CLIENT_ID} from '../config';
 import token from '../shared/lib/Token';
 
-async function gallery(page) {
+async function gallery(page, sort) {
   const bearerToken = await token.getToken('BearerToken');
   return request({
-    url: `/gallery/hot/viral/day/${page}?showViral=true&mature=true&album_previews=false`,
+    url: `/gallery/hot/${sort}/day/${page}?showViral=true&mature=true&album_previews=false`,
     method: 'GET',
     headers: {
       Authorization: `Bearer ${bearerToken}`,

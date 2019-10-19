@@ -54,7 +54,7 @@ class UserContainer extends React.Component {
         console.log(error);
       });
 
-      AccountServices.baseMe()
+    AccountServices.baseMe()
       .then(async response => {
         this.setState({bio: response.data.bio});
         this.setState({username: await token.getToken('username')});
@@ -88,12 +88,18 @@ class UserContainer extends React.Component {
             </View>
           </View>
           <View style={styles.pictures}>
-            <FlatList
-              numColumns={3}
-              data={this.state.pictures}
-              renderItem={({item}) => this.renderItem(item)}
-              keyExtractor={item => item.id.toString()}
-            />
+            {this.state.pictures ? (
+              <FlatList
+                numColumns={3}
+                data={this.state.pictures}
+                renderItem={({item}) => this.renderItem(item)}
+                keyExtractor={item => item.id.toString()}
+              />
+            ) : (
+              <Text style={{color: 'white', textAlign: 'center'}}>
+                Pas de photos à afficher
+              </Text>
+            )}
           </View>
         </View>
       </LayoutContainer>
