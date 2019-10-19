@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, Button, FlatList} from 'react-native';
+import { Text, View, StyleSheet, Button, FlatList } from 'react-native';
 import LayoutContainer from '../components/layout/Layout';
 import CircleImage from '../components/image/CircleImage';
 import stylesheet from '../styles/styles';
@@ -14,7 +14,7 @@ class UserContainer extends React.Component {
       pictures: [],
       avatar: '',
       username: '',
-      bio: '',
+      bio: ''
     };
   }
 
@@ -31,7 +31,6 @@ class UserContainer extends React.Component {
   componentDidMount(): void {
     AccountServices.images(0)
       .then(response => {
-        console.log(response);
         let picturesArr = response.data.map(picture => {
           return {
             thumbnail: {
@@ -40,27 +39,27 @@ class UserContainer extends React.Component {
             id: picture.id,
           };
         });
-        this.setState({pictures: picturesArr});
+        this.setState({ pictures: picturesArr });
       })
       .catch(error => {
-        console.log(error);
+        console.debug(error);
       });
 
     AccountServices.avatar()
       .then(response => {
-        this.setState({avatar: response.data.avatar});
+        this.setState({ avatar: response.data.avatar });
       })
       .catch(error => {
-        console.log(error);
+        console.debug(error);
       });
 
     AccountServices.baseMe()
       .then(async response => {
-        this.setState({bio: response.data.bio});
-        this.setState({username: await token.getToken('username')});
+        this.setState({ bio: response.data.bio });
+        this.setState({ username: await token.getToken('username') });
       })
       .catch(error => {
-        console.log(error);
+        console.debug(error);
       });
   }
 
@@ -76,12 +75,14 @@ class UserContainer extends React.Component {
               </View>
               <View style={styles.infos}>
                 <Text
-                  style={[{fontSize: 30}, stylesheet.white, stylesheet.bold]}>
+                  style={[{ fontSize: 30 }, stylesheet.white, stylesheet.bold]}
+                >
                   {this.state.username}
                 </Text>
                 <Text
                   numberOfLines={3}
-                  style={[{fontSize: 14}, stylesheet.grey]}>
+                  style={[{ fontSize: 14 }, stylesheet.grey]}
+                >
                   {this.state.bio}
                 </Text>
               </View>
@@ -92,11 +93,11 @@ class UserContainer extends React.Component {
               <FlatList
                 numColumns={3}
                 data={this.state.pictures}
-                renderItem={({item}) => this.renderItem(item)}
+                renderItem={item => this.renderItem(item)}
                 keyExtractor={item => item.id.toString()}
               />
             ) : (
-              <Text style={{color: 'white', textAlign: 'center'}}>
+              <Text style={{ color: 'white', textAlign: 'center' }}>
                 Pas de photos à afficher
               </Text>
             )}
@@ -110,7 +111,7 @@ class UserContainer extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: 'hsl(218,15%,15%)',
+    backgroundColor: 'hsl(218,15%,15%)'
   },
   banner_content: {
     margin: 10,
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
   },
   banner: {
     height: 140,
-    backgroundColor: 'hsl(218,15%,15%)',
+    backgroundColor: 'hsl(218,15%,15%)'
   },
   pictures: {
     marginVertical: 1,

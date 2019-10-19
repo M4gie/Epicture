@@ -10,7 +10,6 @@ import UserContainer from '../../views/User';
 import AuthLoadingContainer from '../../views/Login/AuthLoading';
 import AuthContainer from '../../views/Login/Auth';
 import ImgurWebView from '../../views/Login/ImgurWebView';
-import LoginStatusContainer from '../../views/Login/LoginStatus';
 
 const bottomTabNavigator = createBottomTabNavigator(
   {
@@ -67,7 +66,6 @@ const AppStack = createAppContainer(bottomTabNavigator);
 const AuthStack = createStackNavigator({
   SignIn: {screen: AuthContainer, navigationOptions: {header: null}},
   Login: {screen: ImgurWebView},
-  LoginStatus: {screen: LoginStatusContainer, path: 'status'},
 });
 
 export default createAppContainer(

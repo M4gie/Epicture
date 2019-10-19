@@ -45,7 +45,7 @@ class HomeContainer extends React.Component {
         this.setState({gallery: mainFlowFiltered});
       })
       .catch(error => {
-        console.log(error);
+        console.debug(error);
       });
   };
 
@@ -74,7 +74,7 @@ class HomeContainer extends React.Component {
         this.setState({gallery: mainFlowFiltered});
       })
       .catch(error => {
-        console.log(error);
+        console.debug(error);
       });
   };
 
