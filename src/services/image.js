@@ -1,13 +1,6 @@
 import request from '../shared/lib/AxiosWrap';
 import token from '../shared/lib/Token';
 
-/*const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => resolve(reader.result);
-  reader.onerror = error => reject(error);
-});*/
-
 async function upload(image) {
   const bearerToken = await token.getToken('BearerToken');
   return request({
@@ -18,7 +11,7 @@ async function upload(image) {
     },
     data: {
       type: 'base64',
-      image: `${image.data}`
+      image: `${image.data}`,
     }
   });
 }
