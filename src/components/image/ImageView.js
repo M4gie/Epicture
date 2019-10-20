@@ -14,7 +14,14 @@ class ImageView extends React.Component {
       <View style={styles.main_container}>
         <View style={styles.topview}>
           <View style={{width: 60, padding: 5}}>
-            <CircleImage size={60} pic={image.profilepic ? image.profilepic : 'https://i.imgur.com/mCHMpLT.png?3'} />
+            <CircleImage
+              size={60}
+              pic={
+                image.profilepic
+                  ? image.profilepic
+                  : 'https://i.imgur.com/mCHMpLT.png?3'
+              }
+            />
           </View>
           <View
             style={{
@@ -32,7 +39,11 @@ class ImageView extends React.Component {
         </View>
 
         <View style={styles.image}>
-          <Image source={{uri: image.image}} style={{flex: 1}} />
+          <Image
+            source={{uri: image.image}}
+            resizeMode={'stretch'}
+            style={{flex: 1}}
+          />
         </View>
 
         <View style={styles.bottomview}>
@@ -77,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    height: 300,
+    height: 500,
   },
   bottomview: {
     flex: 1,

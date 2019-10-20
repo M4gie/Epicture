@@ -25,8 +25,13 @@ class HomeContainer extends React.Component {
     GalleryServices.gallery(0, this.state.sort)
       .then(response => {
         let mainFlow = response.data.map(element => {
-          if (element.images) {
+          if (
+            element.images &&
+            (element.images[0].type === 'image/jpeg' ||
+              element.images[0].type === 'image/png')
+          ) {
             return {
+              type: element.images[0].type,
               id: element.id,
               image: element.images[0].link,
               favorite: element.favorite,
@@ -40,7 +45,7 @@ class HomeContainer extends React.Component {
           }
         });
         let mainFlowFiltered = mainFlow.filter(function(el) {
-          return el != undefined;
+          return el !== undefined;
         });
         this.setState({gallery: mainFlowFiltered});
       })
@@ -54,7 +59,11 @@ class HomeContainer extends React.Component {
     GalleryServices.gallerySearch(0, search, this.state.sort)
       .then(response => {
         let mainFlow = response.data.map(element => {
-          if (element.images) {
+          if (
+            element.images &&
+            (element.images[0].type === 'image/jpeg' ||
+              element.images[0].type === 'image/png')
+          ) {
             return {
               id: element.id,
               image: element.images[0].link,
@@ -69,7 +78,7 @@ class HomeContainer extends React.Component {
           }
         });
         let mainFlowFiltered = mainFlow.filter(function(el) {
-          return el != undefined;
+          return el !== undefined;
         });
         this.setState({gallery: mainFlowFiltered});
       })

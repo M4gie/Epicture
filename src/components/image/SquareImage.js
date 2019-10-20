@@ -8,9 +8,7 @@ class SquareImage extends React.Component {
     const item = this.props.item;
 
     return (
-      <TouchableOpacity
-        style={{flex: 1 / 3, aspectRatio: 1, padding: 1}}
-        onPress={() => alert('image touched')}>
+      <TouchableOpacity style={{flex: 1 / 3, aspectRatio: 1, padding: 1}}>
         <Image style={{flex: 1}} resizeMode="cover" source={item.thumbnail} />
       </TouchableOpacity>
     );

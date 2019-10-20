@@ -20,12 +20,19 @@ class FavoriteContainer extends React.Component {
     AccountServices.favorites(0)
       .then(response => {
         let pictures = response.data.map(fav => {
-          return {
-            thumbnail: {
-              uri: fav.images[0].link,
-            },
-            id: fav.id,
-          };
+          if (
+            fav.images &&
+            (fav.images[0].type === 'image/jpeg' ||
+              fav.images[0].type === 'image/png') &&
+            fav.images[0].link !== ''
+          ) {
+            return {
+              thumbnail: {
+                uri: fav.images[0].link,
+              },
+              id: fav.id,
+            };
+          }
         });
         this.setState({favorites: pictures});
       })
