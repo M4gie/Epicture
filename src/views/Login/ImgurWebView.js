@@ -15,7 +15,6 @@ class ImgurWebView extends React.Component {
       while ((m = regex.exec(url))) {
         params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
       }
-      console.log(params);
       await token.saveToken('BearerToken', params.access_token);
       await token.saveToken('username', params.account_username);
       this.props.navigation.navigate('App');
@@ -29,7 +28,6 @@ class ImgurWebView extends React.Component {
   }
 
   render() {
-    console.log(API_IMGUR_CLIENT_ID);
     return (
       <WebView
         source={{

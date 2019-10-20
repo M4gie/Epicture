@@ -2,37 +2,35 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Video from 'react-native-video';
 
-class AuthContainer extends React.Component {
-  connect = () => {
-    this.props.navigation.navigate('Login');
+const AuthContainer = props => {
+  const connect = () => {
+    props.navigation.navigate('Login');
   };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Video
-          source={require('./../../assets/video/spin_cycle.mp4')}
-          rate={1.0}
-          volume={1.0}
-          muted={false}
-          resizeMode={'cover'}
-          repeat
-          style={styles.video}
-        />
-        <Text style={styles.appname}>Ouistigram</Text>
-        <View style={styles.content}>
-          <Text style={styles.title}>Bienvenue sur Ouistigram !</Text>
-          <Text style={styles.description}>
-            Créé par Steeven REGNAULT et Julien MONTAGNE
-          </Text>
-          <TouchableOpacity style={styles.buttonConnect} onPress={this.connect}>
-            <Text style={styles.buttonText}>Se connecter avec Imgur</Text>
-          </TouchableOpacity>
-        </View>
+  return (
+    <View style={styles.container}>
+      <Video
+        source={require("./../../assets/video/spin_cycle.mp4")}
+        rate={1.0}
+        volume={1.0}
+        muted={false}
+        resizeMode={'cover'}
+        repeat
+        style={styles.video}
+      />
+      <Text style={styles.appname}>Ouistigram</Text>
+      <View style={styles.content}>
+        <Text style={styles.title}>Bienvenue sur Ouistigram !</Text>
+        <Text style={styles.description}>
+          Créé par Steeven REGNAULT et Julien MONTAGNE
+        </Text>
+        <TouchableOpacity style={styles.buttonConnect} onPress={connect}>
+          <Text style={styles.buttonText}>Se connecter avec Imgur</Text>
+        </TouchableOpacity>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

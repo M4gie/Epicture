@@ -1,35 +1,28 @@
 // DownVote.js
 
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import stylesheet from '../../styles/styles';
 
-class DownVote extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const DownVote = props => {
+  const { imageHash, vote, downs, iconSize, handleVote } = props;
 
-  render() {
-    const {imageHash, vote, downs, iconSize, handleVote} = this.props;
-
-    return (
-      <TouchableOpacity
-        style={{marginHorizontal: 5}}
-        onPress={() => handleVote('down', imageHash)}>
-        <Text style={stylesheet.white}>
-          <Icon
-            name={'arrow-down'}
-            color={vote === "down" ? 'red' : 'grey'}
-            size={iconSize}
-          />{' '}
-          {downs}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-}
-
-const styles = StyleSheet.create({});
+  return (
+    <TouchableOpacity
+      style={{ marginHorizontal: 5 }}
+      onPress={() => handleVote('down', imageHash)}
+    >
+      <Text style={stylesheet.white}>
+        <Icon
+          name={'arrow-down'}
+          color={vote === 'down' ? 'red' : 'grey'}
+          size={iconSize}
+        />{' '}
+        {downs}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
 export default DownVote;
