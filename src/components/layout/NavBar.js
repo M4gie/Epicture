@@ -16,7 +16,7 @@ const bottomTabNavigator = createBottomTabNavigator(
     Home: {
       screen: HomeContainer,
       navigationOptions: {
-        tabBarIcon: ({tintColor}) => (
+        tabBarIcon: ({ tintColor }) => (
           <Icon name={'home'} color={tintColor} size={25} />
         ),
       },
@@ -24,7 +24,7 @@ const bottomTabNavigator = createBottomTabNavigator(
     Upload: {
       screen: UploadContainer,
       navigationOptions: {
-        tabBarIcon: ({tintColor}) => (
+        tabBarIcon: ({ tintColor }) => (
           <Icon name={'plus-square'} color={tintColor} size={25} />
         ),
       },
@@ -32,7 +32,7 @@ const bottomTabNavigator = createBottomTabNavigator(
     Favorite: {
       screen: FavoriteContainer,
       navigationOptions: {
-        tabBarIcon: ({tintColor}) => (
+        tabBarIcon: ({ tintColor }) => (
           <Icon name={'heart'} color={tintColor} size={25} />
         ),
       },
@@ -40,7 +40,7 @@ const bottomTabNavigator = createBottomTabNavigator(
     User: {
       screen: UserContainer,
       navigationOptions: {
-        tabBarIcon: ({tintColor}) => (
+        tabBarIcon: ({ tintColor }) => (
           <Icon name={'user'} color={tintColor} size={25} />
         ),
       },
@@ -48,6 +48,7 @@ const bottomTabNavigator = createBottomTabNavigator(
   },
   {
     initialRouteName: 'Home',
+    lazy: false,
     tabBarOptions: {
       activeTintColor: 'white',
       inactiveTintColor: 'grey',
@@ -56,16 +57,16 @@ const bottomTabNavigator = createBottomTabNavigator(
       style: {
         backgroundColor: 'hsl(218,7%,21%)',
         paddingBottom: 2,
-        borderTopColor: 'hsl(206,5%,26%)',
+        borderTopColor: 'hsl(206,5%,26%)'
       },
     },
-  },
+  }
 );
 
 const AppStack = createAppContainer(bottomTabNavigator);
 const AuthStack = createStackNavigator({
-  SignIn: {screen: AuthContainer, navigationOptions: {header: null}},
-  Login: {screen: ImgurWebView},
+  SignIn: { screen: AuthContainer, navigationOptions: { header: null } },
+  Login: { screen: ImgurWebView },
 });
 
 export default createAppContainer(
@@ -73,10 +74,10 @@ export default createAppContainer(
     {
       AuthLoading: AuthLoadingContainer,
       App: AppStack,
-      Auth: {screen: AuthStack, path: ''},
+      Auth: { screen: AuthStack, path: '' },
     },
     {
-      initialRouteName: 'AuthLoading',
-    },
-  ),
+      initialRouteName: 'AuthLoading'
+    }
+  )
 );
