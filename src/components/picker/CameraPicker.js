@@ -1,12 +1,12 @@
 // CameraPicker.js
 
 import React from 'react';
-import { Button } from 'react-native';
+import {Button} from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
-import ImageServices from "../../services/image";
+import ImageServices from '../../services/image';
 
 const CameraPicker = props => {
-  const { handleUploadLoading } = props;
+  const {handleUploadLoading} = props;
   return (
     <Button
       title={'Prendre une photo'}
@@ -25,11 +25,11 @@ const CameraPicker = props => {
               })
               .catch(error => {
                 handleUploadLoading(false);
-                console.log(error);
+                console.debug(error);
               });
           })
           .catch(err => {
-            console.log('openCamera catch' + err.toString());
+            console.debug('openCamera catch' + err.toString());
           })
       }
     />

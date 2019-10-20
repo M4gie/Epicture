@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import LayoutContainer from './../components/layout/Layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import stylesheet from './../styles/styles';
@@ -15,7 +15,7 @@ class UploadContainer extends React.Component {
   }
 
   handleUploadLoading = uploading => {
-    this.setState({ uploading: uploading });
+    this.setState({uploading: uploading});
   };
 
   render() {
@@ -30,9 +30,8 @@ class UploadContainer extends React.Component {
                 style={{
                   flex: 3,
                   borderBottomWidth: 1,
-                  borderBottomColor: 'white'
-                }}
-              >
+                  borderBottomColor: 'white',
+                }}>
                 <View style={styles.content}>
                   <Icon name={'image'} color={'grey'} size={100} />
                   <Text style={[stylesheet.white, styles.content_text]}>
@@ -43,7 +42,7 @@ class UploadContainer extends React.Component {
                   />
                 </View>
               </View>
-              <View style={{ flex: 3 }}>
+              <View style={{flex: 3}}>
                 <View style={styles.content}>
                   <Icon name={'camera'} color={'grey'} size={100} />
                   <Text style={[stylesheet.white, styles.content_text]}>
@@ -65,7 +64,7 @@ class UploadContainer extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: 'hsl(213,7%,25%)',
+    backgroundColor: '#3b3f44',
     padding: 10,
   },
   content: {

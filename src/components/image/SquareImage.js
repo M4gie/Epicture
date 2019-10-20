@@ -6,8 +6,6 @@ import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 const SquareImage = props => {
   const {item} = props.item;
 
-  console.log(item)
-
   return (
     <TouchableOpacity style={styles.imageContainer}>
       <Image style={{flex: 1}} resizeMode="cover" source={item.thumbnail} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, View, Text } from 'react-native';
+import {FlatList, StyleSheet, View, Text} from 'react-native';
 import LayoutContainer from '../components/layout/Layout';
 import AccountServices from '../services/account';
 import SquareImage from '../components/image/SquareImage';
@@ -34,7 +34,7 @@ class FavoriteContainer extends React.Component {
             };
           }
         });
-        this.setState({ favorites: pictures });
+        this.setState({favorites: pictures});
       })
       .catch(error => {
         console.debug(error);
@@ -51,10 +51,10 @@ class FavoriteContainer extends React.Component {
                 numColumns={3}
                 data={this.state.favorites}
                 keyExtractor={item => item.id.toString()}
-                renderItem={( item ) => this.renderItem(item)}
+                renderItem={item => this.renderItem(item)}
               />
             ) : (
-              <Text style={{ color: 'white', textAlign: 'center' }}>
+              <Text style={{color: 'white', textAlign: 'center'}}>
                 Pas de favoris.
               </Text>
             )}
@@ -68,7 +68,7 @@ class FavoriteContainer extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: 'hsl(218,15%,15%)'
+    backgroundColor: '#21252c',
   },
   pictures: {
     marginVertical: 1,

@@ -1,10 +1,10 @@
 // UpDown.js
 
 import React from 'react';
-import { View } from 'react-native';
-import GalleryService from "../../services/gallery";
-import UpVote from "./UpVote";
-import DownVote from "./DownVote";
+import {View} from 'react-native';
+import GalleryService from '../../services/gallery';
+import UpVote from './UpVote';
+import DownVote from './DownVote';
 
 class UpDown extends React.Component {
   constructor(props) {
@@ -26,11 +26,11 @@ class UpDown extends React.Component {
           this.setState({
             vote: isUp ? null : 'up',
             ups: isUp ? this.state.ups - 1 : this.state.ups + 1,
-            downs: isDown ? this.state.downs - 1 : this.state.downs
+            downs: isDown ? this.state.downs - 1 : this.state.downs,
           });
         })
         .catch(error => {
-          console.log(error);
+          console.debug(error);
         });
     } else if (newVote === 'down') {
       GalleryService.voting(imageHash, isDown ? 'veto' : 'down')
@@ -38,11 +38,11 @@ class UpDown extends React.Component {
           this.setState({
             vote: isDown ? null : 'down',
             downs: isDown ? this.state.downs - 1 : this.state.downs + 1,
-            ups: isUp ? this.state.ups - 1 : this.state.ups
+            ups: isUp ? this.state.ups - 1 : this.state.ups,
           });
         })
         .catch(error => {
-          console.log(error);
+          console.debug(error);
         });
     }
   };
@@ -51,7 +51,7 @@ class UpDown extends React.Component {
     const imageHash = this.props.imageHash;
 
     return (
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{flexDirection: 'row'}}>
         <UpVote
           iconSize={20}
           ups={this.state.ups}

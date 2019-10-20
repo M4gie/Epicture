@@ -1,7 +1,7 @@
 import React from 'react';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createStackNavigator} from 'react-navigation-stack';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import HomeContainer from '../../views/Home';
 import UploadContainer from '../../views/Upload';
@@ -16,7 +16,7 @@ const bottomTabNavigator = createBottomTabNavigator(
     Home: {
       screen: HomeContainer,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => (
+        tabBarIcon: ({tintColor}) => (
           <Icon name={'home'} color={tintColor} size={25} />
         ),
       },
@@ -24,7 +24,7 @@ const bottomTabNavigator = createBottomTabNavigator(
     Upload: {
       screen: UploadContainer,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => (
+        tabBarIcon: ({tintColor}) => (
           <Icon name={'plus-square'} color={tintColor} size={25} />
         ),
       },
@@ -32,7 +32,7 @@ const bottomTabNavigator = createBottomTabNavigator(
     Favorite: {
       screen: FavoriteContainer,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => (
+        tabBarIcon: ({tintColor}) => (
           <Icon name={'heart'} color={tintColor} size={25} />
         ),
       },
@@ -40,7 +40,7 @@ const bottomTabNavigator = createBottomTabNavigator(
     User: {
       screen: UserContainer,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => (
+        tabBarIcon: ({tintColor}) => (
           <Icon name={'user'} color={tintColor} size={25} />
         ),
       },
@@ -55,18 +55,18 @@ const bottomTabNavigator = createBottomTabNavigator(
       showLabel: false,
       keyboardHidesTabBar: false,
       style: {
-        backgroundColor: 'hsl(218,7%,21%)',
+        backgroundColor: '#323539',
         paddingBottom: 2,
-        borderTopColor: 'hsl(206,5%,26%)'
+        borderTopColor: '#3f4346',
       },
     },
-  }
+  },
 );
 
 const AppStack = createAppContainer(bottomTabNavigator);
 const AuthStack = createStackNavigator({
-  SignIn: { screen: AuthContainer, navigationOptions: { header: null } },
-  Login: { screen: ImgurWebView },
+  SignIn: {screen: AuthContainer, navigationOptions: {header: null}},
+  Login: {screen: ImgurWebView},
 });
 
 export default createAppContainer(
@@ -74,10 +74,10 @@ export default createAppContainer(
     {
       AuthLoading: AuthLoadingContainer,
       App: AppStack,
-      Auth: { screen: AuthStack, path: '' },
+      Auth: {screen: AuthStack, path: ''},
     },
     {
-      initialRouteName: 'AuthLoading'
-    }
-  )
+      initialRouteName: 'AuthLoading',
+    },
+  ),
 );

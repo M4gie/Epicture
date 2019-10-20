@@ -1,9 +1,7 @@
 import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
-import {SearchBar} from 'react-native-elements';
 import LayoutContainer from '../components/layout/Layout';
 import ImageView from '../components/image/ImageView';
-import stylesheet from '../styles/styles';
 import GalleryServices from '../services/gallery';
 import CustomSearch from '../components/search/CustomSearch';
 
@@ -130,7 +128,7 @@ class HomeContainer extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: 'hsl(218,15%,15%)',
+    backgroundColor: '#21252c',
   },
   textinput: {
     marginLeft: 5,

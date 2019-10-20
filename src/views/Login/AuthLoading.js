@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
-import token from "../../shared/lib/Token";
+import token from '../../shared/lib/Token';
 
 class AuthLoadingContainer extends React.Component {
   componentDidMount() {
@@ -14,7 +14,7 @@ class AuthLoadingContainer extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    const userToken = await token.getToken("BearerToken");
+    const userToken = await token.getToken('BearerToken');
     this.props.navigation.navigate(userToken ? 'App' : 'Auth');
   };
 
@@ -32,16 +32,16 @@ class AuthLoadingContainer extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: 'hsl(218,15%,15%)',
+    backgroundColor: '#21252c',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   text: {
     textAlign: 'center',
     fontSize: 35,
     color: 'white',
     marginVertical: 30,
-    fontFamily: 'Catalunyademo'
+    fontFamily: 'Catalunyademo',
   },
 });
 

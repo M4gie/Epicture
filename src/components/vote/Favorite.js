@@ -15,10 +15,9 @@ class Favorite extends React.Component {
     AlbumServices.favorite(imageHash)
       .then(response => {
         this.setState({favorite: !this.state.favorite});
-        console.log(response);
       })
       .catch(error => {
-        console.log(error);
+        console.debug(error);
       });
   };
 
@@ -37,7 +36,5 @@ class Favorite extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});
 
 export default Favorite;

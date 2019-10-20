@@ -1,19 +1,19 @@
 // CustomSearch.js
 
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import stylesheet from '../../styles/styles';
-import { SearchBar } from 'react-native-elements';
+import {SearchBar} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const CustomSearch = props => {
-  const { updateSearch, changeSort, search, sort } = props;
+  const {updateSearch, changeSort, search, sort} = props;
 
   return (
     <View style={[styles.search_container, stylesheet.shadow_box]}>
-      <View style={{ width: '90%' }}>
+      <View style={{width: '90%'}}>
         <SearchBar
-          inputContainerStyle={{ borderRadius: 50 }}
+          inputContainerStyle={{borderRadius: 50}}
           containerStyle={[stylesheet.shadow_box, styles.search]}
           placeholder="Rechercher..."
           onChangeText={search => updateSearch(search)}
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   search_container: {
     flexDirection: 'row',
     height: 70,
-    backgroundColor: 'hsl(218,15%,15%)'
+    backgroundColor: '#21252c',
   },
   filter_view: {
     justifyContent: 'center',
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     borderTopWidth: 0,
     height: '100%',
-    backgroundColor: 'hsl(218,15%,15%)',
+    backgroundColor: '#21252c',
     elevation: 0,
   },
 });

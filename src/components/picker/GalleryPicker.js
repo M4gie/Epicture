@@ -1,12 +1,12 @@
 // GalleryPicker.js
 
 import React from 'react';
-import { Button } from 'react-native';
+import {Button} from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
-import ImageServices from "../../services/image";
+import ImageServices from '../../services/image';
 
 const GalleryPicker = props => {
-  const { handleUploadLoading } = props;
+  const {handleUploadLoading} = props;
   return (
     <Button
       title={'Choisir une photo de la galerie'}
@@ -24,12 +24,12 @@ const GalleryPicker = props => {
                 handleUploadLoading(false);
               })
               .catch(error => {
-                console.log(error);
+                console.debug(error);
                 handleUploadLoading(false);
               });
           })
           .catch(error => {
-            console.log(error);
+            console.debug(error);
           });
       }}
     />
