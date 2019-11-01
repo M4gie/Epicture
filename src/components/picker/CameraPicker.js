@@ -18,7 +18,7 @@ const CameraPicker = props => {
           includeBase64: true,
         })
           .then(image => {
-            this.props.handleUploadLoading(true);
+            props.handleUploadLoading(true);
             ImageServices.upload(image)
               .then(() => {
                 handleUploadLoading(false);
